@@ -1,0 +1,24 @@
+<form [formGroup]="myForm" (ngSubmit)="loguear()">
+    <br>
+    <div>
+        <label><strong> Email </strong></label>
+        <input type="email" formControlName="email"
+        [ngClass]="{error:myForm.get('email')?.hasError('required') && myForm.get('email')?.dirty}">
+    </div>
+    <div *ngIf="myForm.get('email')?.errors && myForm.get('email')?.dirty">
+        <p *ngIf="myForm.get('email')?.hasError('required')"> Campo Obligatorio </p>
+    </div>
+    <br>
+    <div>
+        <label><strong> Contraseña </strong></label>
+        <input type="password" formControlName="contraseña"
+        [ngClass]="{error:myForm.get('contraseña')?.hasError('required') && myForm.get('contraseña')?.dirty, warning:myForm.get('contraseña')?.hasError('minlength') || myForm.get('contraseña')?.hasError('maxlength')}">
+    </div>
+    <div *ngIf="myForm.get('contraseña')?.errors && myForm.get('contraseña')?.dirty">
+        <p *ngIf="myForm.get('contraseña')?.hasError('required')"> Campo Obligatorio </p>
+        <p *ngIf="myForm.get('contraseña')?.hasError('minlength')"> Caracteres minimos insuficientes (6)</p>
+        <p *ngIf="myForm.get('contraseña')?.hasError('maxlength')"> Se paso el maximo de caracteres (10)</p>
+    </div>
+    <br>
+    <button mat-raised-button color="primary" [disabled]="myForm.invalid" type="submit"> Entrar </button>
+</form>

@@ -1,0 +1,13 @@
+<div *ngIf="isLoading">
+    Cargando Espere...
+</div>
+<div *ngIf="!isLoading">
+    <div>
+        <img src={{producto.thumbnail}} alt="" width="300" height="275">
+        <h1>{{producto.title}}</h1>
+        <p> Estado: {{producto.condition}} </p>
+        <p> Precio: {{producto.price | currency:"ARS "}}</p>
+        <p> Disponible: {{producto.available_quantity}}</p>
+        <p>{{producto.warranty}}</p>
+    </div>
+</div>

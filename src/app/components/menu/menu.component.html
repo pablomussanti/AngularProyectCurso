@@ -1,0 +1,19 @@
+<mat-list>
+    <mat-list-item routerLink="/" class="cursor">
+      <mat-icon mat-list-icon>home</mat-icon>
+      <div mat-line>Inicio</div>
+    </mat-list-item>
+    <mat-list-item routerLink="/registrarse" class="cursor" *ngIf="!islogin">
+        <mat-icon mat-list-icon>person_add</mat-icon>
+        <div mat-line>Registrarse</div>
+    </mat-list-item>
+    <mat-list-item routerLink="/login" class="cursor" *ngIf="!islogin">
+        <mat-icon mat-list-icon>login</mat-icon>
+        <div mat-line>Iniciar Sesion</div>
+    </mat-list-item>
+    <mat-list-item (click)="logout()" class="cursor" *ngIf="islogin">
+        <mat-icon mat-list-icon>login</mat-icon>
+        <div mat-line>Cerrar sesion</div>
+    </mat-list-item>
+</mat-list>
+

@@ -1,0 +1,33 @@
+<div *ngIf="isLoading">
+    Cargando Espere...
+</div>
+<div *ngIf="!isLoading">
+    <h2> {{title}}</h2>
+    <h3>Listado de Productos:</h3>
+
+    <div>
+
+
+            <div fxLayout="row wrap">
+            <div fxFlex="25" fxFlex.sm="33.3" fxFlex.xs="50" *ngFor="let producto of productos">
+            <mat-card class="example-card">
+                <mat-card-header>
+                  <div mat-card-avatar><mat-icon mat-list-icon>shop</mat-icon></div>
+                  <mat-card-title>{{producto.title}}</mat-card-title>
+                  <mat-card-subtitle>Lugar: {{producto.seller_address.city.name}}</mat-card-subtitle>
+                </mat-card-header>
+                <img src={{producto.thumbnail}} alt="" width="300" height="275">
+                <mat-card-content>
+                    <h4>{{producto.price | currency:'ARS '}}</h4>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-stroked-button routerLink="/productos/{{producto.id}}">Mas Informacion</button>
+                </mat-card-actions>
+              </mat-card>
+            <br>
+        </div>
+        </div>
+    </div>
+
+</div>
+
